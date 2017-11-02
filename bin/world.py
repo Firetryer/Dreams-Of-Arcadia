@@ -1,19 +1,27 @@
 import pygame
-import world_classes
+from world_classes import *
 
 
 class ArcadeEntrance(Screen):
 	def __init__(self):
-		sg_clickables = pygame.sprite.Group()
-		sg_all 		  = pygame.sprite.Group()
+		Screen.__init__(self)
+		self.create_rooms()
+
+	def create_rooms(self):
+		self.background = Backdrops('Arcade01')
+		self.chr = Clickable('Thomas01', 500, 600, 'Thomas')
+		self.sg_all.add(self.background)
+		self.sg_all.add(self.chr)
+		self.sg_clickables.add(self.chr)
 
 
 class Screen:
 	def __init__(self):
-		pass
+		self.sg_all        = pygame.sprite.Group()
+		self.sg_clickables = pygame.sprite.Group()
 
 	def update(self):
-		pass
+		
 
 	def render(self):
 		pass
