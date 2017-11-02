@@ -1,8 +1,8 @@
-
+import pygame
 import json
 
 class Assets:
-	def get(name):
+	def load(name):
 		with open('bin/assets.json') as assets:
 			assets = json.load(assets)
-		return assets[name]
+		return pygame.image.load(assets[name]).convert_alpha()

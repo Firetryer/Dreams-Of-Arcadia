@@ -48,7 +48,7 @@ class World:
 		pass
 
 	def render(self, screen):
-		self.camera.display()
+		self.camera.display(screen, self.current_screen.sg_all)
 
 	def handle_events(self):
 		pass

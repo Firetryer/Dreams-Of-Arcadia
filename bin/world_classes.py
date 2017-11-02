@@ -5,7 +5,7 @@ class Sprite(pygame.sprite.Sprite):
 	def __init__(self, image):
 		pygame.sprite.Sprite.__init__(self)
 		#Could have master image stored somewhere else.
-		self.MasterImage = pygame.image.load(Assets.get(image)).convert_alpha()
+		self.MasterImage = Assets.load(image)
 		self.image = self.MasterImage.copy()
 		self.rect = self.image.get_rect()
 		self.imageCenter = self.rect.width / 2, self.rect.height / 2

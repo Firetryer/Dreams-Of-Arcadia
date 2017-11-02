@@ -9,5 +9,7 @@ class Camera:
 		self.x = self.sprite.x
 		self.y = self.sprite.y
 
-	def display(self):
-		pass
+	def display(self, screen, sprite_group):
+
+		for sprites in sprite_group:
+			screen.blit(sprites.image, (sprites.rect.x + self. x, sprites.rect.y + self.y))

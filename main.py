@@ -14,6 +14,7 @@ class Game:
 		
 		while self.game_loop:
 			current_time = self.clock.tick()
+			self.screen.fill([0, 0, 0])
 			self.game.update()
 			self.game.render(self.screen)
 			self.game.handle_events()
@@ -23,4 +24,7 @@ class Game:
 				if event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_ESCAPE:
 						self.game_loop = False
+			pygame.display.flip()
+
+
 		pygame.quit()
