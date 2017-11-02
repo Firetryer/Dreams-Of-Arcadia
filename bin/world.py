@@ -28,7 +28,7 @@ class ArcadeEntrance(Screen):
 	def create_rooms(self):
 		self.background = Backdrops('Arcade01')
 		self.background.set_layer(1)
-		self.chr = Clickable('Thomas01', 400, 440, 'Thomas')
+		self.chr = Clickable('Thomas01', 800, 470, 'Thomas')
 		self.chr.image= pygame.transform.scale(self.chr.image, (int(self.chr.rect.width*0.7), int(self.chr.rect.height*0.7)))
 		self.chr.set_layer(2)
 		self.sg_all.add(self.background)
