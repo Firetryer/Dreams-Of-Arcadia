@@ -15,5 +15,11 @@ class Game:
 		while self.game_loop:
 			current_time = self.clock.tick()
 			self.game.update()
-			self.game.render()
+			self.game.render(screen)
 			self.game.handle_events()
+			for events in pygame.event.get():
+				if event.type == pygame.QUIT:
+					self.game_loop = False
+				if event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_ESCAPE:
+						self.game_loop = False

@@ -1,5 +1,5 @@
 import pygame
-import world
+from . import world
 
 class GameManager:
 	def __init__(self):
@@ -9,8 +9,8 @@ class GameManager:
 	def update(self):
 		self.current.update()
 
-	def render(self):
-		self.current.render()
+	def render(self, screen):
+		self.current.render(screen)
 
 	def handle_events(self):
 		self.current.handle_events()
