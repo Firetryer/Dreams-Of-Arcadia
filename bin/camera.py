@@ -1,8 +1,8 @@
 import pygame
 class Camera:
 	def __init__(self):
-		self.x
-		self.y
+		self.x = 0
+		self.y = 0
 		self.follow = None
 
 	def set_focus(self, sprite):

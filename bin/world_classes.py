@@ -6,7 +6,7 @@ class Sprite(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 		#Could have master image stored somewhere else.
 		self.MasterImage = pygame.image.load(Assets.get(image)).convert_alpha()
-		self.image = self.Masterimage.copy()
+		self.image = self.MasterImage.copy()
 		self.rect = self.image.get_rect()
 		self.imageCenter = self.rect.width / 2, self.rect.height / 2
 
@@ -14,7 +14,6 @@ class Sprite(pygame.sprite.Sprite):
 class Backdrops(Sprite):
 	def __init__(self, image):
 		Sprite.__init__(self, image)
-		self.Sprite = Sprite(Assets.get(image))
 		self.rect.x = 0
 		self.rect.y = 0
 

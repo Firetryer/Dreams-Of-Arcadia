@@ -3,6 +3,6 @@ import json
 
 class Assets:
 	def get(name):
-		with open('assets.json') as assets:
+		with open('bin/assets.json') as assets:
 			assets = json.load(assets)
 		return assets[name]
