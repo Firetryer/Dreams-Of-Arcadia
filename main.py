@@ -1,15 +1,19 @@
 import pygame
 from bin import GAME
-
+import json
 
 class Game:
 	def __init__(self):
 		pygame.init()
 		self.GAME = True
-		self. screen = pygame.display.set_mode((1280, 720))
+		with open("bin/settings.json") as settings:
+			settings = json.load(settings)
+
+		self.screen = pygame.display.set_mode((settings['resolution']['x'], settings['resolution']['y']))
 		self.clock = pygame.time.Clock()
 		self.game = GAME.GameManager()
 		self.game_loop()
+
 	def game_loop(self):
 		
 		while self.game_loop:
