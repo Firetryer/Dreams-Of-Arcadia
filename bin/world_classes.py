@@ -22,3 +22,6 @@ class Clickable():
 		self.Sprite = Sprite(Assets.get(image))
 		self.rect.x = x
 		self.rect.y = y
+
+	def update():
+		pass
