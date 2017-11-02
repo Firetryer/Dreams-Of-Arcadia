@@ -11,15 +11,13 @@ class Assets:
 
 	def load(self, name):
 		reso = self.settings['resolution']
-		print(reso)
 		offset_width = 100
 		offset_height = 100
 		image = pygame.image.load(self.assets[name]).convert_alpha()
 		if reso['x'] < 1920 and reso['y'] < 1080:
 			offset_width  = reso['x'] / 1920 * 100			
 			offset_height = reso['y'] / 1080 * 100
-		print (image.get_rect().x, image.get_rect().y)
+		
 		image = pygame.transform.scale(image, (int(image.get_rect().width * (offset_width / 100)), int(image.get_rect().height * (offset_height/100))))
 
-		print(offset_height, offset_width)
 		return image
