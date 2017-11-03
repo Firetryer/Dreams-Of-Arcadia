@@ -29,7 +29,8 @@ class Clickable(Sprite):
 		self.name = name
 		self.rect.x = x
 		self.rect.y = y
-		
-		
+
+	
+
 	def update(self):
 		pass

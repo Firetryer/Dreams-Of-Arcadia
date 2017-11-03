@@ -1,10 +1,13 @@
 {
 	"arcade":{
 		"name":"Arcade",
+		"background":"Arcade01",
 		"interactables":{
 			"door":{
+				"image":"Thomas01",
 				"location":{"x":400,"y":200},
 				"action":{
+					"flags_required":{},
 					"type":"move",
 					"dest":"arcade_entrance"
 				}
@@ -13,10 +16,13 @@
 	},
 	"arcade_entrance":{
 		"name":"Arcade Entrance",
+		"background":"Arcade01",
 		"interactables":{
 			"door":{
+				"image":"Thomas01",
 				"location":{"x":400,"y":200},
 				"action":{
+					"flags_required":{},
 					"type":"move",
 					"dest":"arcade"
 				}
