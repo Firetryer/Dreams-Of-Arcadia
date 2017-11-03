@@ -12,5 +12,5 @@ class GameManager:
 	def render(self, screen):
 		self.current.render(screen)
 
-	def handle_events(self):
-		self.current.handle_events()
+	def handle_events(self, event):
+		self.current.handle_events(event)

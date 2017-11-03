@@ -12,10 +12,10 @@ class Screen:
 	def update(self):
 		self.sg_all.update()
 
-	def render(self):
-		pass
+	def render(self,camera,screen):
+		camera.display(screen, self.sg_all)
 
-	def handle_events(self):
+	def handle_events(self, event):
 		pass
 
 
@@ -48,10 +48,11 @@ class World:
 		pass
 
 	def update(self):
-		pass
+		self.current_screen.update()
 
 	def render(self, screen):
-		self.camera.display(screen, self.current_screen.sg_all)
+		self.current_screen.render(self.camera, screen)
+		
 
-	def handle_events(self):
-		pass
+	def handle_events(self, event):
+		self.current_screen.handle_events(event)

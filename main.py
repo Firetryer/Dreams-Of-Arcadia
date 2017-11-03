@@ -21,8 +21,10 @@ class Game:
 			self.screen.fill([0, 0, 0])
 			self.game.update()
 			self.game.render(self.screen)
-			self.game.handle_events()
 			for event in pygame.event.get():
+
+				self.game.handle_events(event)
+
 				if event.type == pygame.QUIT:
 					self.game_loop = False
 				if event.type == pygame.KEYDOWN:
