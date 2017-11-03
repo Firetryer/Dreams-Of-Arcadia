@@ -3,13 +3,36 @@
 		"name":"Arcade",
 		"background":"Arcade01",
 		"interactables":{
-			"door":{
+			"thomas":{
+				"type" : "sprite",
 				"image":"Thomas01",
-				"location":{"x":400,"y":200},
+				"location":{"x":600,"y":350},
 				"action":{
 					"flags_required":{},
 					"type":"move",
 					"dest":"arcade_entrance"
+				}
+			},
+			"counter":{
+				"type" :"mask",
+				"location":{"x":418,"y":645,"width":697,"height":202},
+				"action":{
+					"open_door":{
+						"flags_required":{},
+						"type":"move",
+						"dest":"arcade_entrance"
+					}
+				}
+			},
+			"door":{
+				"type": "mask",
+				"location":{"x":1711,"y":409,"width":209,"height":610},
+				"action":{
+					"open_door":{
+						"flags_required":{},
+						"type":"move",
+						"dest":"arcade_entrance"
+					}
 				}
 			}
 		}
@@ -19,12 +42,14 @@
 		"background":"Arcade01",
 		"interactables":{
 			"door":{
-				"image":"Thomas01",
-				"location":{"x":400,"y":200},
+				"type": "mask",
+				"location":{"x":1711,"y":409,"width":209,"height":610},
 				"action":{
-					"flags_required":{},
-					"type":"move",
-					"dest":"arcade"
+					"open_door":{
+						"flags_required":{},
+						"type":"move",
+						"dest":"arcade_entrance"
+					}
 				}
 			}
 		}

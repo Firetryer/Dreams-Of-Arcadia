@@ -12,7 +12,9 @@ class Sprite(pygame.sprite.Sprite):
 
 	def set_layer(self, layer):
 		self._layer = layer
-
+		#LAYER 01 = Background
+		#LAYER 02 = NONE
+		#LAYER 03 = INTERACTABLES
 		
 class Backdrops(Sprite):
 	def __init__(self, image):
@@ -23,6 +25,7 @@ class Backdrops(Sprite):
 	def update(self):
 		pass
 
+
 class Clickable(Sprite):
 	def __init__(self, image, x = 0, y = 0, name = "Clicky"):
 		Sprite.__init__(self, image)
@@ -30,7 +33,7 @@ class Clickable(Sprite):
 		self.rect.x = x
 		self.rect.y = y
 
-	
+
 
 	def update(self):
 		pass
