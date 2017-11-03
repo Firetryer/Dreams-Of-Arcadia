@@ -100,7 +100,10 @@ class Screen_Manager:
 
 		return self.scenes[name]
 
-
+# In world_locations.json, move all characters to a separate file, include dialog
+# Create classes for Characters instead??? Instead of having monolithic json files
+# Do the scripting for dialog in the class files, whilst calling a json files to reference
+# the Dialog text
 class Scripting():
 	def __init__(self, World, manager):
 		self.world = World
@@ -114,7 +117,9 @@ class Scripting():
 			print(sprite)
 			action = self._has_required_flags(sprite) 
 			if action != False:
-				print(action)
+				if action['type'] == 'move':
+					print("moved to ", action['dest'])
+					self.world.set_screen(action['dest'])
 
 
 	def _has_required_flags(self, sprite):

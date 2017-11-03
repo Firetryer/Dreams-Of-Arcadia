@@ -8,22 +8,14 @@
 				"image":"Thomas01",
 				"location":{"x":600,"y":350},
 				"action":{
-					"flags_required":{},
-					"type":"move",
-					"dest":"arcade_entrance"
-				}
-			},
-			"counter":{
-				"type" :"mask",
-				"location":{"x":418,"y":645,"width":697,"height":202},
-				"action":{
-					"open_door":{
+					"dialog":{
 						"flags_required":{},
-						"type":"move",
+						"type":"None",
 						"dest":"arcade_entrance"
 					}
 				}
 			},
+			
 			"door":{
 				"type": "mask",
 				"location":{"x":1711,"y":409,"width":209,"height":610},
@@ -48,7 +40,7 @@
 					"open_door":{
 						"flags_required":{},
 						"type":"move",
-						"dest":"arcade_entrance"
+						"dest":"arcade"
 					}
 				}
 			}
