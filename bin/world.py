@@ -3,28 +3,8 @@ from .world_classes import *
 from . camera import Camera
 from . import tools
 from . import world_rooms
+import json
 
-class Screen:
-	def __init__(self, World, Camera):
-		self.camera = Camera
-		self.sg_all        = pygame.sprite.LayeredUpdates()
-		self.sg_clickables = pygame.sprite.LayeredUpdates()
-
-	def update(self):
-		self.sg_all.update()
-
-	def render(self,camera,screen):
-		camera.display(screen, self.sg_all)
-
-	def handle_events(self, event):
-		if event.type == pygame.MOUSEBUTTONDOWN:
-			x, y = pygame.mouse.get_pos()
-			print(x, y)
-			pos = tools.screen_to_world(x,y)
-			for sprites in self.sg_clickables:
-				print(sprites.rect)
-				if sprites.rect.collidepoint(pos):
-					print("CLICKED!")
 
 
 
@@ -45,3 +25,18 @@ class World:
 
 	def handle_events(self, event):
 		self.current_screen.handle_events(event)
+
+
+class Screen_Manager:
+	def __init__(self):
+		with open('bin/configs/world_locations.json') as location:
+			self.scene_configs = json.load(locations)
+		
+		self.scenes = []
+
+	def create_rooms(self):
+
+
+class Dialog_Manager():
+	def __init__(self):
+		pass

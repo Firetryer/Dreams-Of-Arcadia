@@ -5,7 +5,7 @@ from . import tools
 class Assets:
 	def __init__(self):
 
-		with open('bin/assets.json') as assets:
+		with open('bin/configs/assets.json') as assets:
 			self.assets = json.load(assets)
 
 	def load(self, name):

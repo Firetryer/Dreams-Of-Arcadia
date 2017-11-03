@@ -1,0 +1,27 @@
+{
+	"arcade":{
+		"name":"Arcade",
+		"interactables":{
+			"door":{
+				"location":{"x":400,"y":200},
+				"action":{
+					"type":"move",
+					"dest":"arcade_entrance"
+				}
+			}
+		}
+	},
+	"arcade_entrance":{
+		"name":"Arcade Entrance",
+		"interactables":{
+			"door":{
+				"location":{"x":400,"y":200},
+				"action":{
+					"type":"move",
+					"dest":"arcade"
+				}
+			}
+		}
+	}
+
+}

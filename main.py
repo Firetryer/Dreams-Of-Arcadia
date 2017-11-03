@@ -6,7 +6,7 @@ class Game:
 	def __init__(self):
 		pygame.init()
 		self.GAME = True
-		with open("bin/settings.json") as settings:
+		with open("bin/configs/settings.json") as settings:
 			settings = json.load(settings)
 
 		self.screen = pygame.display.set_mode((settings['resolution']['x'], settings['resolution']['y']))
