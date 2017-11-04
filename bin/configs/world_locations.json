@@ -4,14 +4,14 @@
 		"background":"Arcade01",
 		"interactables":{
 			"thomas":{
-				"type" : "sprite",
-				"image":"Thomas01",
+				"type" : "character",
+				"image": "Thomas01",
 				"location":{"x":600,"y":350},
 				"action":{
-					"dialog":{
+					"start_dialog_01":{
 						"flags_required":{},
-						"type":"None",
-						"dest":"arcade_entrance"
+						"type":"Dialog_Start",
+						"dialog_id":"default"
 					}
 				}
 			},
@@ -31,11 +31,11 @@
 	},
 	"arcade_entrance":{
 		"name":"Arcade Entrance",
-		"background":"Arcade01",
+		"background":"Arcade_Entrance",
 		"interactables":{
 			"door":{
 				"type": "mask",
-				"location":{"x":1711,"y":409,"width":209,"height":610},
+				"location":{"x":0,"y":410,"width":209,"height":610},
 				"action":{
 					"open_door":{
 						"flags_required":{},

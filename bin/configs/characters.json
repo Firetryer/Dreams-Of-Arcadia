@@ -1,5 +1,29 @@
 {
-	"Main":{
-		"Name":"Bobby"
+	"Arcade_Manager":{
+		"name":"Arcade Manager",
+		"dialogs":{
+			"default":{
+				"text":"Hey! Welcome to the Arcade!",
+				"options":{
+					"Thanks, See ya!":{"next_dialog":"exit_dialog"},
+					"Hey bob, whatcha been up to?":{"next_dialog":"been_up_to",
+						"action":{
+							"set_flag":{
+								"flags_required":{},
+								"type":"set_flag",
+								"flag_settings":{"test_flag":true,"test_flag2":true}
+							}
+						}},
+
+				}
+			},
+			"been_up_to":{
+				"text":"Pfft, ahh nothin much. Same old usual kid.",
+				"options":{
+					"Cool, well see ya!":{"next_dialog":"exit_dialog"},
+				}	
+			}
+
+		}
 	}
 }
