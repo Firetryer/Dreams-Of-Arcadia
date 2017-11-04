@@ -3,7 +3,7 @@
 		"name":"Arcade",
 		"background":"Arcade01",
 		"interactables":{
-			"thomas":{
+			"ArcadeManager":{
 				"type" : "character",
 				"image": "Thomas01",
 				"location":{"x":600,"y":350},
@@ -11,6 +11,7 @@
 					"start_dialog_01":{
 						"flags_required":{},
 						"type":"Dialog_Start",
+						"character":"Arcade_Manager",
 						"dialog_id":"default"
 					}
 				}

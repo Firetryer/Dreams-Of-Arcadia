@@ -3,24 +3,40 @@
 		"name":"Arcade Manager",
 		"dialogs":{
 			"default":{
-				"text":"Hey! Welcome to the Arcade!",
+				"text":["Hey! Welcome to the Arcade!",
+						"This is a test line!",
+						"This is a test line too!!!!"
+				],
 				"options":{
-					"Thanks, See ya!":{"next_dialog":"exit_dialog"},
-					"Hey bob, whatcha been up to?":{"next_dialog":"been_up_to",
+					"option01":{"text":["Thanks, see ya!"],
+						"action":{
+							"next_dialog":{
+								"flags_required":{},
+								"type":"next_dialog",
+								"next_dialog_id":"been_up_to"
+							}
+						}
+					},
+					"option02":{"text":["Hey bob, whatcha been up to?"],
 						"action":{
 							"set_flag":{
 								"flags_required":{},
 								"type":"set_flag",
 								"flag_settings":{"test_flag":true,"test_flag2":true}
+							},
+							"next_dialog":{
+								"flags_required":{},
+								"type":"next_dialog",
+								"next_dialog_id":"exit_dialog"
 							}
-						}},
-
+						}
+					}
 				}
 			},
 			"been_up_to":{
 				"text":"Pfft, ahh nothin much. Same old usual kid.",
 				"options":{
-					"Cool, well see ya!":{"next_dialog":"exit_dialog"},
+					"Cool, well see ya!":{"next_dialog":"exit_dialog"}
 				}	
 			}
 

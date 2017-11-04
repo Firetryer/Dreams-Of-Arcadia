@@ -2,9 +2,11 @@
 	"Arcade01": "bin/assets/Backdrops/Arcade01.png",
 	"Arcade_Entrance": "bin/assets/Backdrops/Arcade_Entrance.png",
 	"Thomas01": "bin/assets/Backdrops/Thomas01.png",
-	"Mask"	  : "bin/assets/Backdrops/mask.png"
-
-
+	"Mask"	  : "bin/assets/Backdrops/mask.png",
+	"Hack_Font": "bin/assets/Fonts/Hack-Regular.ttf",
+	"chat_text": "bin/assets/Backdrops/Chatbox_text.png",
+	"text_lines":"bin/assets/Backdrops/text_lines.png",
+	"text_lines_bottom":"bin/assets/Backdrops/text_lines_bottom.png"
 
 
 }
