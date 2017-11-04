@@ -34,7 +34,9 @@ class World:
 	def __init__(self):
 		self.camera = Camera()
 		self.screen_manager = Screen_Manager(self, self.camera)
-		self.scripts = Scripting(self, self.screen_manager)
+		self.script_manager = Scripting(self, self.screen_manager)
+		self.dialog_manager = Dialog(self)
+
 		self.set_screen('arcade')
 
 	def set_screen(self, newscreen):
@@ -48,7 +50,7 @@ class World:
 		
 
 	def handle_events(self, event):
-		self.scripts.handle_click_events(self.current_screen.handle_events(event))
+		self.script_manager.handle_click_events(self.current_screen.handle_events(event))
 
 
 #Create screens if its not already made, else load from self.scenes
@@ -78,7 +80,7 @@ class Screen_Manager:
 		for items in scene_data['interactables']:
 			#THIS IS IMPORTANT IF SOMETHING GOES WRONG RELATED TO THIS, CHECK HERE
 			sprite = scene_data['interactables'][items]
-			if sprite['type'] == 'sprite':
+			if sprite['type'] == 'character':
 				new_sprite = Clickable(sprite['image'],sprite['location']['x'],sprite['location']['y'],items)
 				new_sprite.set_layer(3)
 
@@ -100,10 +102,16 @@ class Screen_Manager:
 
 		return self.scenes[name]
 
-# In world_locations.json, move all characters to a separate file, include dialog
-# Create classes for Characters instead??? Instead of having monolithic json files
-# Do the scripting for dialog in the class files, whilst calling a json files to reference
-# the Dialog text
+class Dialog():
+	def __init__(self,World):
+		self.world = World
+		with open('bin/configs/characters.json') as characters:
+			self.dialogs = json.load(characters)
+			
+			
+	def Start_Dialog():
+		pass
+
 class Scripting():
 	def __init__(self, World, manager):
 		self.world = World
@@ -120,6 +128,8 @@ class Scripting():
 				if action['type'] == 'move':
 					print("moved to ", action['dest'])
 					self.world.set_screen(action['dest'])
+				elif action['type'] == "Dialog_Start":
+					self.world.dialog_manager(action)
 
 
 	def _has_required_flags(self, sprite):

@@ -37,3 +37,11 @@ class Clickable(Sprite):
 
 	def update(self):
 		pass
+
+
+class Characters(Sprite):
+	def __init__(self, image, x = 0, y = 0, name = "Heh, No name given"):
+		Sprite.__init__(self, image)
+		self.name = name
+		self.rect.x = x
+		self.rect.y = y
