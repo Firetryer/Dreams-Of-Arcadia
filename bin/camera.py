@@ -15,5 +15,7 @@ class Camera:
 
 		for sprites in sprite_group:
 			x, y = sprites.rect.x, sprites.rect.y
-			newx, newy = tools.world_to_screen(x, y)
-			screen.blit(sprites.image, (newx - self.x, newy - self.y))
+			if sprites._inworld:
+				x, y = tools.world_to_screen(x, y)
+			screen.blit(sprites.image, (x - self.x, y - self.y))
+

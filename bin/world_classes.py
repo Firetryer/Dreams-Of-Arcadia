@@ -6,9 +6,13 @@ assets = Assets()
 class Sprite(pygame.sprite.Sprite):	
 	def __init__(self, image):
 		pygame.sprite.Sprite.__init__(self)
-		self.image, self.MasterImage = assets.load(image)
+		self._inworld = True #Whether or not to convert coordinates to screen space
+		self.can_click = True
+		self.image, self.MasterImage = assets.load_image(image)
 		self.rect = self.MasterImage.get_rect()
 
+	def update(self):
+		pass
 
 	def set_layer(self, layer):
 		self._layer = layer
@@ -22,8 +26,6 @@ class Backdrops(Sprite):
 		self.rect.x = 0
 		self.rect.y = 0
 
-	def update(self):
-		pass
 
 
 class Clickable(Sprite):
@@ -34,14 +36,14 @@ class Clickable(Sprite):
 		self.rect.y = y
 
 
+class FontSprite(pygame.sprite.Sprite):
+	def __init__(self):
+		pygame.sprite.Sprite.__init__(self)
+		self._inworld = False
+		self.can_click = False
 
 	def update(self):
 		pass
 
-
-class Characters(Sprite):
-	def __init__(self, image, x = 0, y = 0, name = "Heh, No name given"):
-		Sprite.__init__(self, image)
-		self.name = name
-		self.rect.x = x
-		self.rect.y = y
+	def set_layer(self, layer):
+		self._layer = layer
