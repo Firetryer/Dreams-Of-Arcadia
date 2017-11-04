@@ -2,9 +2,11 @@ import pygame
 from .world_classes import *
 from . camera import Camera
 from . import tools
+from .asset_loader import Assets
 from . import world_rooms
 import json
 
+assets = Assets()
 
 class Screen:
 	def __init__(self, World, Camera):
@@ -12,6 +14,7 @@ class Screen:
 		self.camera = Camera
 		self.sg_all        = pygame.sprite.LayeredUpdates()
 		self.sg_clickables = pygame.sprite.LayeredUpdates()
+		self.sg_dialogs    = pygame.sprite.LayeredUpdates()
 
 	def update(self):
 		self.sg_all.update()
@@ -24,7 +27,7 @@ class Screen:
 			x, y = pygame.mouse.get_pos()
 			pos = tools.screen_to_world(x,y)
 			for sprites in self.sg_clickables:
-				if sprites.rect.collidepoint(pos):
+				if sprites.rect.collidepoint(pos) and sprites.can_click:
 					print("CLICKED: ", sprites.name)
 					return sprites
 
@@ -36,7 +39,7 @@ class World:
 		self.screen_manager = Screen_Manager(self, self.camera)
 		self.script_manager = Scripting(self, self.screen_manager)
 		self.dialog_manager = Dialog(self)
-
+		self.current_screen = None
 		self.set_screen('arcade')
 
 	def set_screen(self, newscreen):
@@ -105,12 +108,64 @@ class Screen_Manager:
 class Dialog():
 	def __init__(self,World):
 		self.world = World
+		self.font = assets.load_font("Hack_Font", 25)
 		with open('bin/configs/characters.json') as characters:
 			self.dialogs = json.load(characters)
-			
-			
-	def Start_Dialog():
-		pass
+
+
+	def Start_Dialog(self, action):
+		character = self.dialogs[action["character"]]
+		dialogs   = character["dialogs"]
+		sg_dialogs = pygame.sprite.LayeredUpdates()
+		w, h = pygame.display.get_surface().get_size()
+		#Add NPC Text
+		for i in self._create_text_sprites(dialogs[action["dialog_id"]]["text"], (h/2/2)):
+			sg_dialogs.add(i)
+		
+		#Add Options
+		for i in dialogs[action["dialog_id"]]["options"]:
+			print(i)
+			for z in self._create_text_sprites(dialogs[action["dialog_id"]]["options"][i]['text'], (h/2), True):
+				z.action = dialogs[action['dialog_id']]['options'][i]['action']
+
+				sg_dialogs.add(z)
+
+
+
+		for texts in sg_dialogs:
+			self.world.current_screen.sg_dialogs.add(texts)
+			self.world.current_screen.sg_all.add(texts)
+		
+
+	def _create_text_sprites(self, text, y, clickable = False):
+		w, h = pygame.display.get_surface().get_size()
+		sg_dialogs = pygame.sprite.LayeredUpdates()
+		line_number = y
+		layer_order = 10
+		first = True
+		for lines in text:
+			line_number += 36
+			layer_order += 1
+			new_line = FontSprite()
+			if first:
+				text_line_image = assets.load_image("text_lines", False)[0]
+				first = False
+			else:
+				text_line_image = assets.load_image("text_lines_bottom", False)[0]
+			text_line_image.blit(self.font.render(lines, True, pygame.Color('white')), (20,-1))
+			new_line.image = text_line_image
+			new_line.rect  = new_line.image.get_rect()
+			new_line.rect.centerx = w/2
+			new_line.rect.y = line_number
+			if clickable:
+				new_line.can_click = True
+			new_line.set_layer(layer_order + 1)
+			sg_dialogs.add(new_line)
+
+		return sg_dialogs
+
+
+
 
 class Scripting():
 	def __init__(self, World, manager):
@@ -129,7 +184,7 @@ class Scripting():
 					print("moved to ", action['dest'])
 					self.world.set_screen(action['dest'])
 				elif action['type'] == "Dialog_Start":
-					self.world.dialog_manager(action)
+					self.world.dialog_manager.Start_Dialog(action)
 
 
 	def _has_required_flags(self, sprite):
