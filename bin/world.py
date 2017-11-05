@@ -23,13 +23,20 @@ class Screen:
 		camera.display(screen, self.sg_all)
 
 	def handle_events(self, event):
+		#Add a focus blah blah blah
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			x, y = pygame.mouse.get_pos()
-			pos = tools.screen_to_world(x,y)
-			for sprites in self.sg_clickables:
-				if sprites.rect.collidepoint(pos) and sprites.can_click:
-					print("CLICKED: ", sprites.name)
-					return sprites
+			
+			if bool(self.sg_dialogs):
+				pos = (x,y)
+				for sprites in self.sg_dialogs:
+					if sprites.rect.collidepoint(pos) and sprites.can_click:
+						return sprites
+			else:
+				pos = tools.screen_to_world(x,y)
+				for sprites in self.sg_clickables:
+					if sprites.rect.collidepoint(pos) and sprites.can_click:
+						return sprites
 
 
 
@@ -105,17 +112,24 @@ class Screen_Manager:
 
 		return self.scenes[name]
 
+# Next work on action system
+# Work on dialog closing
+# 
+
 class Dialog():
 	def __init__(self,World):
 		self.world = World
 		self.font = assets.load_font("Hack_Font", 25)
 		with open('bin/configs/characters.json') as characters:
 			self.dialogs = json.load(characters)
+		self.character = None
 
+	def StartDialog(self, action):
+		self.character = self.dialogs[action['character']]
+		self._StartDialog(action)
 
-	def Start_Dialog(self, action):
-		character = self.dialogs[action["character"]]
-		dialogs   = character["dialogs"]
+	def _StartDialog(self, action):
+		dialogs   = self.character["dialogs"]
 		sg_dialogs = pygame.sprite.LayeredUpdates()
 		w, h = pygame.display.get_surface().get_size()
 		#Add NPC Text
@@ -123,14 +137,15 @@ class Dialog():
 			sg_dialogs.add(i)
 		
 		#Add Options
+		temp_list = []
+		current_iter = 0
 		for i in dialogs[action["dialog_id"]]["options"]:
-			print(i)
-			for z in self._create_text_sprites(dialogs[action["dialog_id"]]["options"][i]['text'], (h/2), True):
+			current_iter+=15
+			temp_list.append(i)
+			for z in self._create_text_sprites(dialogs[action["dialog_id"]]["options"][i]['text'], (h/2+current_iter*2), True):
+				print(z.rect)
 				z.action = dialogs[action['dialog_id']]['options'][i]['action']
-
 				sg_dialogs.add(z)
-
-
 
 		for texts in sg_dialogs:
 			self.world.current_screen.sg_dialogs.add(texts)
@@ -138,6 +153,7 @@ class Dialog():
 		
 
 	def _create_text_sprites(self, text, y, clickable = False):
+		print(text)
 		w, h = pygame.display.get_surface().get_size()
 		sg_dialogs = pygame.sprite.LayeredUpdates()
 		line_number = y
@@ -155,8 +171,9 @@ class Dialog():
 			text_line_image.blit(self.font.render(lines, True, pygame.Color('white')), (20,-1))
 			new_line.image = text_line_image
 			new_line.rect  = new_line.image.get_rect()
-			new_line.rect.centerx = w/2
+			new_line.rect.x = w/2/2
 			new_line.rect.y = line_number
+			#print(new_line.rect)
 			if clickable:
 				new_line.can_click = True
 			new_line.set_layer(layer_order + 1)
@@ -166,6 +183,14 @@ class Dialog():
 
 
 
+	def next_dialog(self, action):
+		self.exit_dialog()
+		self._StartDialog(action)
+
+
+	def exit_dialog(self):
+		for sprites in self.world.current_screen.sg_dialogs:
+			sprites.kill()
 
 class Scripting():
 	def __init__(self, World, manager):
@@ -177,34 +202,39 @@ class Scripting():
 	def handle_click_events(self,sprite):
 
 		if sprite != None:
-			print(sprite)
-			action = self._has_required_flags(sprite) 
-			if action != False:
-				if action['type'] == 'move':
-					print("moved to ", action['dest'])
-					self.world.set_screen(action['dest'])
-				elif action['type'] == "Dialog_Start":
-					self.world.dialog_manager.Start_Dialog(action)
+			if bool(sprite.action):
+				for actions in sprite.action:
+					action = self._has_required_flags(sprite.action[actions])
+					print(sprite)
 
+					if action != False:
+						if action['type'] == 'move':
+							print("moved to ", action['dest'])
+							self.world.set_screen(action['dest'])
+						elif action['type'] == 'dialog_start':
+							self.world.dialog_manager.StartDialog(action)
 
-	def _has_required_flags(self, sprite):
+						elif action['type'] == 'next_dialog':
+							self.world.dialog_manager.next_dialog(action)
+
+						elif action['type'] == 'exit_dialog':
+							self.world.dialog_manager.exit_dialog()
+
+	def _has_required_flags(self, action):
 		#Check if has necessary flags required:
-		if bool(sprite.action):#Is not empty
-			print("DEBUG: NOT EMPTY")
-			for actions in sprite.action: #Open Door
-				if bool(sprite.action[actions]['flags_required']): #Is not empty
-					for game_flags in self.game_flags:
-						for required_flags in sprite.action[actions]['required_flags']:
-							if game_flags == required_flags: #Checks if keys are the same
-								#Checks if values are the same
-								if self.game_flags[game_flags] == sprite.actions[actions]['required_flags'][required_flags]: 
-									print("DEBUG: VALUES ARE EQUAL")
-									return sprite.action[actions]
-								else:
-									print("DEBUG: Values not equal")
-									return False
-									
-				else:#No Requirements
-					print("DEBUG: NO REQUIREMENTS")
-					return sprite.action[actions]
+		if bool(action['flags_required']): #Is not empty
+			for game_flags in self.game_flags:
+				for required_flags in action['required_flags']:
+					if game_flags == required_flags: #Checks if keys are the same
+						#Checks if values are the same
+						if self.game_flags[game_flags] == action['required_flags'][required_flags]: 
+							print("DEBUG: VALUES ARE EQUAL")
+							return action
+						else:
+							print("DEBUG: Values not equal")
+							return False
+							
+		else:#No Requirements
+			print("DEBUG: NO REQUIREMENTS")
+			return action
 	

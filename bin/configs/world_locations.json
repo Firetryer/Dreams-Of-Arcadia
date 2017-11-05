@@ -10,7 +10,7 @@
 				"action":{
 					"start_dialog_01":{
 						"flags_required":{},
-						"type":"Dialog_Start",
+						"type":"dialog_start",
 						"character":"Arcade_Manager",
 						"dialog_id":"default"
 					}

@@ -12,8 +12,7 @@
 						"action":{
 							"next_dialog":{
 								"flags_required":{},
-								"type":"next_dialog",
-								"next_dialog_id":"been_up_to"
+								"type":"exit_dialog"
 							}
 						}
 					},
@@ -27,16 +26,23 @@
 							"next_dialog":{
 								"flags_required":{},
 								"type":"next_dialog",
-								"next_dialog_id":"exit_dialog"
+								"dialog_id":"been_up_to"
 							}
 						}
 					}
 				}
 			},
 			"been_up_to":{
-				"text":"Pfft, ahh nothin much. Same old usual kid.",
+				"text":["Pfft, ahh nothin much. Same old usual kid."],
 				"options":{
-					"Cool, well see ya!":{"next_dialog":"exit_dialog"}
+					"option01":{"text":["Thats cool!, well.... bye!"],
+						"action":{
+							"next_dialog":{
+								"flags_required":{},
+								"type":"exit_dialog"
+							}
+						}
+					}
 				}	
 			}
 
