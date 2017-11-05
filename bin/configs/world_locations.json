@@ -5,7 +5,7 @@
 		"interactables":{
 			"ArcadeManager":{
 				"type" : "character",
-				"image": "Thomas01",
+				"image": "character",
 				"location":{"x":600,"y":350},
 				"action":{
 					"start_dialog_01":{
