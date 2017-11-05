@@ -105,8 +105,8 @@ class Screen_Manager:
 		return self.scenes[name]
 
 
-# Next work on action system
-# Work on dialog closing
+# Create separate dialog trees, thats separate from characters, give it a field for which character speaks it.
+# Create a separate character json class. Why? IDK
 class Dialog():
 	def __init__(self,World):
 		self.world = World
@@ -126,20 +126,57 @@ class Dialog():
 		#Add NPC Text
 		for i in self._create_text_sprites(dialogs[action["dialog_id"]]["text"], (h/2/2)):
 			sg_dialogs.add(i)
+
 		#Add Options
-		temp_list = []
-		current_iter = 0
-		for i in dialogs[action["dialog_id"]]["options"]:
-			current_iter+=15
-			for z in self._create_text_sprites(dialogs[action["dialog_id"]]["options"][i]['text'], (h/2+current_iter*2), True):
-				z.rect.y += 50
-				z.action = dialogs[action['dialog_id']]['options'][i]['action']
-				sg_dialogs.add(z)
+
+		for i in self._create_dialog_options(dialogs[action['dialog_id']]['options']):
+			sg_dialogs.add(i)
+
 
 		for texts in sg_dialogs:
 			self.world.current_screen.sg_dialogs.add(texts)
 			self.world.current_screen.sg_all.add(texts)
+	
+	def _create_dialog_options(self, options):
+		print("DEBUG: Creating Dialog Options")
+		w, h = pygame.display.get_surface().get_size()
+		sg_dialogs = pygame.sprite.LayeredUpdates()
 		
+		
+		current_iter = 1
+		layer_order = 10
+		option_iter = 0
+		first = True
+		for option in options:
+			print(option)
+			line_number = h/2+current_iter
+			option_iter += 15
+			for lines in option['text']:
+				line_number += 36
+				layer_order += 1
+				new_line = FontSprite()
+				if first:
+					text_line_image = assets.load("text_lines", False)[0][0]
+					first = False
+				else:
+					text_line_image = assets.load("text_lines_bottom", False)[0][0]
+
+				text_line_image.blit(self.font.render(lines,True, pygame.Color('white')), (20, 4))
+
+				new_line.image = text_line_image
+				new_line.rect  = new_line.image.get_rect()
+				new_line.rect.x = w/2/2
+				new_line.rect.y = tools.size_to_screen(line_number) + option_iter
+
+				new_line.can_click = True
+				new_line.set_layer(layer_order + 1)
+				new_line.action = option['action']
+				sg_dialogs.add(new_line)
+				option_iter += 10
+
+
+		return sg_dialogs
+
 	def _create_text_sprites(self, text, y, clickable = False):
 		print("DEBUG: Creating Text Sprite With Text > \n     ", text)
 		w, h = pygame.display.get_surface().get_size()
@@ -189,7 +226,8 @@ class Scripting():
 		if sprite != None:
 			if bool(sprite.action):
 				for actions in sprite.action:
-					action = self._has_required_flags(sprite.action[actions])
+					print (actions)
+					action = self._has_required_flags(actions)
 					if action != False:
 						if action['type'] == 'move':
 							print("DEBUG: Moved To > ", action['dest'])

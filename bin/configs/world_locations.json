@@ -7,26 +7,26 @@
 				"type" : "character",
 				"image": "character",
 				"location":{"x":600,"y":350},
-				"action":{
-					"start_dialog_01":{
+				"action":[
+					{
 						"flags_required":{},
 						"type":"dialog_start",
 						"character":"Arcade_Manager",
 						"dialog_id":"default"
 					}
-				}
+				]
 			},
 			
 			"door":{
 				"type": "mask",
 				"location":{"x":1711,"y":409,"width":209,"height":610},
-				"action":{
-					"open_door":{
+				"action":[
+					{
 						"flags_required":{},
 						"type":"move",
 						"dest":"arcade_entrance"
 					}
-				}
+				]
 			}
 		}
 	},
@@ -37,13 +37,13 @@
 			"door":{
 				"type": "mask",
 				"location":{"x":0,"y":410,"width":209,"height":610},
-				"action":{
-					"open_door":{
+				"action":[
+					{
 						"flags_required":{},
 						"type":"move",
 						"dest":"arcade"
 					}
-				}
+				]
 			}
 		}
 	}

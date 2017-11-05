@@ -7,43 +7,46 @@
 						"This is a test line!",
 						"This is a test line too!!!!"
 				],
-				"options":{
-					"option01":{"text":["Thanks, see ya!"],
-						"action":{
-							"next_dialog":{
+				"options":[
+					{
+						"text":["Thanks, see ya!"],
+						"action":[
+							{
 								"flags_required":{},
 								"type":"exit_dialog"
 							}
-						}
+						]
 					},
-					"option02":{"text":["Hey bob, whatcha been up to?"],
-						"action":{
-							"set_flag":{
+					{
+						"text":["Hey bob, whatcha been up to?"],
+						"action":[
+							{
 								"flags_required":{},
 								"type":"set_flag",
 								"flag_settings":{"test_flag":true,"test_flag2":true}
 							},
-							"next_dialog":{
+							{
 								"flags_required":{},
 								"type":"next_dialog",
 								"dialog_id":"been_up_to"
 							}
-						}
+						]
 					}
-				}
+				]
 			},
 			"been_up_to":{
 				"text":["Pfft, ahh nothin much. Same old usual kid."],
-				"options":{
-					"option01":{"text":["Thats cool!, well.... bye!"],
-						"action":{
-							"next_dialog":{
+				"options":[
+					{
+						"text":["Thats cool!, well.... bye!"],
+						"action":[
+							{
 								"flags_required":{},
 								"type":"exit_dialog"
 							}
-						}
+						]
 					}
-				}	
+				]
 			}
 
 		}
