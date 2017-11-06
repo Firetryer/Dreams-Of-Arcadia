@@ -24,6 +24,7 @@ class Assets:
 	def load_animation(self, name, scale = True):
 		with open(self.assets[name]['info']) as info:
 			sheets = json.load(info)
+
 		single = sheets['frames'][0]['frame'] # Get a single frame for use as master image
 		frames = []
 		SpriteSheet_Master = pygame.image.load(self.assets[name]['file'])
@@ -34,7 +35,7 @@ class Assets:
 		for frame in sheets['frames']:
 			z = frame['frame']
 			new_frame = SpriteSheet_Master.subsurface(pygame.Rect(z['x'], z['y'], z['w'], z['h']))
-			self.scale_image(new_frame)
+			new_frame = self.scale_image(new_frame)
 			frames.append(new_frame)
 
 		print(frames, Sprite_Master)
