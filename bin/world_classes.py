@@ -4,8 +4,9 @@ from . import tools
 assets = Assets()
 
 class Sprite(pygame.sprite.Sprite):	
-	def __init__(self,image):
+	def __init__(self,image, name = "Default"):
 		pygame.sprite.Sprite.__init__(self)
+		self.name = name
 		self._inworld = True #Whether or not to convert coordinates to screen space
 		self.can_click = True
 		self.animation = Animation(self)
@@ -66,6 +67,49 @@ class Clickable(Sprite):
 		self.name = name
 		self.rect.x = x
 		self.rect.y = y
+
+class Characters(Sprite):
+	def __init__(self, image, name):
+		Sprite.__init__(self, image)
+		self.name = name
+
+
+class Dialog_Object(pygame.sprite.Sprite):
+	def __init__(self, text_list, font, character_name):
+		pygame.sprite.Sprite.__init__(self)
+		self.name = character_name
+		self.text_list = text_list
+		self.create_text_sprites(font)
+		self._inworld = True
+		self.can_click = False
+		self.cur_iter = 0
+		self.max_wait = 90
+		self.cur_wait = 0
+		self._layer   = 20
+
+	def create_text_sprites(self, font):
+		self.image_list= []
+		for texts in self.text_list:
+			self.image_list.append(font.render(texts, True, pygame.Color('white'),(0, 0)))
+			self.image = self.image_list[0]
+			self.rect  = self.image.get_rect()
+
+	def start_dialog(self):
+		
+		if self.max_wait == self.cur_wait:
+			self.cur_iter = (self.cur_iter + 1) % len(self.image_list)
+			old_centerx, old_y  = self.rect.centerx, self.rect.y
+			self.image = self.image_list[self.cur_iter]
+			self.rect  = self.image.get_rect()
+			self.rect.centerx, self.rect.y = old_centerx, old_y
+			self.cur_wait = 0
+
+		else:
+			self.cur_wait += 1
+		if self.cur_iter == len(self.image_list) - 1:
+			self.kill()
+
+
 
 
 
