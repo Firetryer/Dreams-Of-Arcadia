@@ -1,47 +1,47 @@
 { "frames": [
    {
     "filename": "Character-sheet 0.png",
-    "frame": { "x": 0, "y": 0, "w": 105, "h": 199 },
+    "frame": { "x": 0, "y": 0, "w": 210, "h": 398 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 105, "h": 199 },
-    "sourceSize": { "w": 105, "h": 199 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 210, "h": 398 },
+    "sourceSize": { "w": 210, "h": 398 },
     "duration": 100
    },
    {
     "filename": "Character-sheet 1.png",
-    "frame": { "x": 105, "y": 0, "w": 105, "h": 199 },
+    "frame": { "x": 210, "y": 0, "w": 210, "h": 398 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 105, "h": 199 },
-    "sourceSize": { "w": 105, "h": 199 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 210, "h": 398 },
+    "sourceSize": { "w": 210, "h": 398 },
     "duration": 100
    },
    {
     "filename": "Character-sheet 2.png",
-    "frame": { "x": 210, "y": 0, "w": 105, "h": 199 },
+    "frame": { "x": 420, "y": 0, "w": 210, "h": 398 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 105, "h": 199 },
-    "sourceSize": { "w": 105, "h": 199 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 210, "h": 398 },
+    "sourceSize": { "w": 210, "h": 398 },
     "duration": 100
    },
    {
     "filename": "Character-sheet 3.png",
-    "frame": { "x": 315, "y": 0, "w": 105, "h": 199 },
+    "frame": { "x": 630, "y": 0, "w": 210, "h": 398 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 105, "h": 199 },
-    "sourceSize": { "w": 105, "h": 199 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 210, "h": 398 },
+    "sourceSize": { "w": 210, "h": 398 },
     "duration": 100
    },
    {
     "filename": "Character-sheet 4.png",
-    "frame": { "x": 420, "y": 0, "w": 105, "h": 199 },
+    "frame": { "x": 840, "y": 0, "w": 210, "h": 398 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 105, "h": 199 },
-    "sourceSize": { "w": 105, "h": 199 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 210, "h": 398 },
+    "sourceSize": { "w": 210, "h": 398 },
     "duration": 100
    }
  ],
@@ -50,7 +50,7 @@
   "version": "1.3-dev",
   "image": "/home/rewelcabiles/Development/Projects/RetroGameJam/bin/assets/Sprites/Character-sheet.png",
   "format": "RGBA8888",
-  "size": { "w": 525, "h": 199 },
+  "size": { "w": 1050, "h": 398 },
   "scale": "1"
  }
 }
