@@ -1,4 +1,9 @@
 {
+	"Ted":{
+		"name" :"Ted",
+		"image":"character"
+
+	},
 	"Arcade_Manager":{
 		"name":"Arcade Manager",
 		"dialogs":{

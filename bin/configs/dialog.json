@@ -1,5 +1,5 @@
 {
-	"Ted":{
+	"Arcade_Manager":{
 		"phone":{
 
 			"dialog":[
@@ -10,7 +10,7 @@
 				"Don't ask me why, I'll tell you when you're here!",
 				"Okay, Bye!"
 			],
-			"required_flags":{}
+			"flags_required":{}
 		}
 	},
 	"Mom":{
@@ -21,7 +21,7 @@
 				"Go get it before you go!",
 				"Well, be safe and have fun!"
 			],
-			"required_flags":{
+			"flags_required":{
 				"answered_phone":true
 			}
 		}

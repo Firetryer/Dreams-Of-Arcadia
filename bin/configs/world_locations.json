@@ -1,18 +1,17 @@
 {
 	"arcade":{
 		"name":"Arcade",
-		"background":"Arcade01",
+		"background":"bedroom01",
 		"interactables":{
-			"ArcadeManager":{
+			"Arcade_Manager":{
 				"type" : "character",
 				"image": "character",
-				"location":{"x":600,"y":350},
+				"location":{"x":600,"y":532},
 				"action":[
 					{
 						"flags_required":{},
 						"type":"dialog_start",
-						"character":"Arcade_Manager",
-						"dialog_id":"default"
+						"character":"Arcade_Manager"
 					}
 				]
 			},
