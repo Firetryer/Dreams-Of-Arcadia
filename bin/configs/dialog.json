@@ -1,6 +1,31 @@
 {
-	
+	"Ted":{
+		"phone":{
 
+			"dialog":[
 
-	
+				"Hey Kenny! Are you there?",
+				"Get your butt over to the Arcade!",
+				"Mike, and Louie are on their way as well!",
+				"Don't ask me why, I'll tell you when you're here!",
+				"Okay, Bye!"
+			],
+			"required_flags":{}
+		}
+	},
+	"Mom":{
+		"dining01":{
+			"dialog":[
+				"Hi Sweetie! Going to the Arcade with your friends?",
+				"I left you some money on the counter in the kitchen",
+				"Go get it before you go!",
+				"Well, be safe and have fun!"
+			],
+			"required_flags":{
+				"answered_phone":true
+			}
+		}
+
+	}
 }
+

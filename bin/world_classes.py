@@ -68,6 +68,8 @@ class Clickable(Sprite):
 		self.rect.y = y
 
 
+
+
 class FontSprite(pygame.sprite.Sprite):
 	def __init__(self):
 		pygame.sprite.Sprite.__init__(self)

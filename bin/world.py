@@ -110,7 +110,7 @@ class Screen_Manager:
 class Dialog():
 	def __init__(self,World):
 		self.world = World
-		self.font = assets.load("Hack_Font", 25)
+		self.font = assets.load("Pixel_Font", 25)
 		with open('bin/configs/characters.json') as characters:
 			self.dialogs = json.load(characters)
 		self.character = None

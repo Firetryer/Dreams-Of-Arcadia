@@ -24,7 +24,10 @@
 		"type" : "font",
 		"file" : "bin/assets/Fonts/Hack-Regular.ttf"
 	},
-
+	"Pixel_Font":{
+		"type" : "font",
+		"file" : "bin/assets/Fonts/outline_pixel-7.ttf"
+	},
 	"Mask":{
 		"type" : "static",
 		"file" : "bin/assets/Backdrops/mask.png"
@@ -49,6 +52,11 @@
 	"character":{
 		"type" : "animated",
 		"file" : "bin/assets/Sprites/Character-sheet.png",
-		"info" : "bin/assets/Sprites/Character.json"
+		"info" : "bin/assets/Sprites/Character-sheet.json"
+	},
+
+	"bedroom01":{
+		"type" : "static",
+		"file" : "bin/assets/Backgrounds/Bedroom01.png"
 	}
 }
