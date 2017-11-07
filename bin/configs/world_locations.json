@@ -1,50 +1,106 @@
 {
-	"arcade":{
-		"name":"Arcade",
+	"Kennys Bed Room":{
+		"name":"Kennys Room",
 		"background":"bedroom01",
-		"interactables":{
-			"Arcade_Manager":{
+		"interactables":[
+			{
 				"type" : "character",
+				"name" : "Kenny",
 				"image": "character",
-				"location":{"x":600,"y":532},
+				"clickable": false,
+				"location":{"x":1100,"y":532},
+				"action":[
+				]
+			},
+			
+			{
+				"type": "mask",
+				"name": "door",
+
+				"clickable": true,
+				"location":{"x":180,"y":445,"width":270,"height":485},
+				"action":[
+					{
+						"flags_required":{},
+						"type":"move",
+						"dest":"Kennys Living Room"
+					}
+				]
+			},
+			{
+				"type": "mask",
+				"name": "Ted",
+				"clickable": true,
+				"location":{"x":713,"y":723,"width":149,"height":89},
 				"action":[
 					{
 						"flags_required":{},
 						"type":"dialog_start",
-						"character":"Arcade_Manager"
+						"character":"Ted"
+					},
+					{
+						"flags_required":{"answered_ted_phone":false},
+						"type":"set_flag",
+						"flag_settings":{"answered_ted_phone":true}
+					},
+					{
+						"flags_required":{},
+						"type":"remove_sprite",
+						"sprite_name": "Ring_Animation"
 					}
 				]
 			},
-			
-			"door":{
-				"type": "mask",
-				"location":{"x":1711,"y":409,"width":209,"height":610},
-				"action":[
-					{
-						"flags_required":{},
-						"type":"move",
-						"dest":"arcade_entrance"
-					}
-				]
+			{
+				"type" : "character",
+				"name" : "Ring_Animation",
+				"image": "phone_ring",
+				"clickable": false,
+				"location":{"x":700,"y":590},
+				"action":[]
 			}
-		}
+		]
 	},
-	"arcade_entrance":{
-		"name":"Arcade Entrance",
-		"background":"Arcade_Entrance",
-		"interactables":{
-			"door":{
+	"Kennys Living Room":{
+		"name":"Kennys Living Room",
+		"background":"livingroom01",
+		"interactables":[
+			{
+				"type" : "character",
+				"name" : "Kenny",
+				"image": "character",
+				"clickable": false,
+				"location":{"x":1200,"y":532},
+				"action":[
+				]
+			},
+			{
+				"type" : "character",
+				"name" : "Kennys Mom",
+				"image": "kennys_mom",
+				"clickable": true,
+				"location":{"x":860,"y":562},
+				"action":[
+					{
+						"flags_required":{},
+						"type":"dialog_start",
+						"character":"Kennys Mom"
+					}
+				]
+			},
+			{
 				"type": "mask",
-				"location":{"x":0,"y":410,"width":209,"height":610},
+				"name": "door",
+				"clickable": true,
+				"location":{"x":1646,"y":445,"width":270,"height":481},
 				"action":[
 					{
 						"flags_required":{},
 						"type":"move",
-						"dest":"arcade"
+						"dest":"Kennys Bed Room"
 					}
 				]
 			}
-		}
+		]
 	}
 
 }

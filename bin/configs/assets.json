@@ -26,7 +26,7 @@
 	},
 	"Pixel_Font":{
 		"type" : "font",
-		"file" : "bin/assets/Fonts/outline_pixel-7.ttf"
+		"file" : "bin/assets/Fonts/Instructions.ttf"
 	},
 	"Mask":{
 		"type" : "static",
@@ -52,11 +52,32 @@
 	"character":{
 		"type" : "animated",
 		"file" : "bin/assets/Sprites/Character-sheet.png",
-		"info" : "bin/assets/Sprites/Character-sheet.json"
+		"info" : "bin/assets/Sprites/Character-sheet.json",
+		"delay": 10
+	},
+	"phone_ring":{
+		"type" : "animated",
+		"file" : "bin/assets/Sprites/Phone_Ring-sheet.png",
+		"info" : "bin/assets/Sprites/Phone_Ring-sheet.json",
+		"delay": 8
+	},
+	"kennys_mom":{
+		"type" : "animated",
+		"file" : "bin/assets/Sprites/Kennys_Mom-sheet.png",
+		"info" : "bin/assets/Sprites/Kennys_Mom-sheet.json",
+		"delay": 10
 	},
 
 	"bedroom01":{
 		"type" : "static",
 		"file" : "bin/assets/Backgrounds/Bedroom01.png"
+	},
+	"livingroom01":{
+		"type" : "static",
+		"file" : "bin/assets/Backgrounds/LivingRoom01.png"
+	},
+	"text_bubble":{
+		"type" : "static",
+		"file" : "bin/assets/Sprites/Text_Bubble.png"
 	}
 }
