@@ -1,0 +1,56 @@
+{ "frames": [
+   {
+    "filename": "Kennys_Mom 0.ase",
+    "frame": { "x": 0, "y": 0, "w": 178, "h": 365 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 178, "h": 365 },
+    "sourceSize": { "w": 178, "h": 365 },
+    "duration": 100
+   },
+   {
+    "filename": "Kennys_Mom 1.ase",
+    "frame": { "x": 178, "y": 0, "w": 178, "h": 365 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 178, "h": 365 },
+    "sourceSize": { "w": 178, "h": 365 },
+    "duration": 100
+   },
+   {
+    "filename": "Kennys_Mom 2.ase",
+    "frame": { "x": 356, "y": 0, "w": 178, "h": 365 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 178, "h": 365 },
+    "sourceSize": { "w": 178, "h": 365 },
+    "duration": 100
+   },
+   {
+    "filename": "Kennys_Mom 3.ase",
+    "frame": { "x": 534, "y": 0, "w": 178, "h": 365 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 178, "h": 365 },
+    "sourceSize": { "w": 178, "h": 365 },
+    "duration": 100
+   },
+   {
+    "filename": "Kennys_Mom 4.ase",
+    "frame": { "x": 712, "y": 0, "w": 178, "h": 365 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 178, "h": 365 },
+    "sourceSize": { "w": 178, "h": 365 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.3-dev",
+  "image": "/home/rewelcabiles/Development/Projects/RetroGameJam/bin/assets/Sprites/Kennys_Mom-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 890, "h": 365 },
+  "scale": "1"
+ }
+}
