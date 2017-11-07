@@ -60,6 +60,6 @@ class Assets:
 
 	def scale_image(self, master_image):
 		w, h = master_image.get_rect().width, master_image.get_rect().height
-		image = pygame.transform.scale(master_image, tools.world_to_screen(w, h))
+		image = pygame.transform.scale(master_image, tools.world_to_screen(w, h)).convert_alpha()
 		return image
 
