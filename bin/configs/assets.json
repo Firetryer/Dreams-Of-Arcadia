@@ -76,6 +76,14 @@
 		"type" : "static",
 		"file" : "bin/assets/Backgrounds/LivingRoom01.png"
 	},
+	"kitchen01":{
+		"type" : "static",
+		"file" : "bin/assets/Backgrounds/Kitchen.png"
+	},
+	"money_change":{
+		"type" : "static",
+		"file" : "bin/assets/Sprites/money_change.png"
+	},
 	"text_bubble":{
 		"type" : "static",
 		"file" : "bin/assets/Sprites/Text_Bubble.png"
