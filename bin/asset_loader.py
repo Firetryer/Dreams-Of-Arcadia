@@ -19,7 +19,7 @@ class Assets:
 		image = MasterImage
 		if scale:
 			image = self.scale_image(MasterImage)
-		return [image], MasterImage, name
+		return [image], MasterImage, name, 0
 
 	def load_animation(self, name, scale = True):
 		with open(self.assets[name]['info']) as info:
@@ -38,8 +38,7 @@ class Assets:
 			new_frame = self.scale_image(new_frame)
 			frames.append(new_frame)
 
-		print(frames, Sprite_Master)
-		return frames, Sprite_Master, name
+		return frames, Sprite_Master, name, self.assets[name]['delay']
 
 	def load(self, name, size = 5, scale = True):
 		
@@ -50,9 +49,9 @@ class Assets:
 			return self.load_image('DEFAULT')
 			
 		if file['type'] == 'animated':
-			return self.load_animation(name)
+			return self.load_animation(name, scale)
 		elif file['type'] == 'static':
-			return self.load_image(name)
+			return self.load_image(name, scale)
 		elif file['type'] == 'font':
 			if size == 5:
 				print("DEBUG: FONT Size is default 5")

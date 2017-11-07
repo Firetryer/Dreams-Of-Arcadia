@@ -17,7 +17,7 @@ class Game:
 	def game_loop(self):
 		
 		while self.game_loop:
-			current_time = self.clock.tick()
+			current_time = self.clock.tick(60)
 			self.screen.fill([0, 0, 0])
 			self.game.update()
 			self.game.render(self.screen)

@@ -13,10 +13,9 @@ class Sprite(pygame.sprite.Sprite):
 		self.set_image(image)
 
 	def set_image(self, image):
-		frames, self.MasterImage, name = assets.load(image)
-		print(frames)
+		frames, self.MasterImage, name, delay = assets.load(image)
 		self.image = frames[0]
-		self.animation.add_animation(frames, name)
+		self.animation.add_animation(frames, name, delay)
 		self.rect = self.MasterImage.get_rect()
 		self.animation.set_animation(name)
 		
@@ -37,7 +36,8 @@ class Animation():
 		self.delay_max = 10
 		self.delay_cur = 0
 
-	def add_animation(self, frames, name):
+	def add_animation(self, frames, name, delay):
+		self.delay_max = delay
 		self.animation_list[name] = frames
 
 	def set_animation(self, name):
@@ -68,11 +68,6 @@ class Clickable(Sprite):
 		self.rect.x = x
 		self.rect.y = y
 
-class Characters(Sprite):
-	def __init__(self, image, name):
-		Sprite.__init__(self, image)
-		self.name = name
-
 
 class Dialog_Object(pygame.sprite.Sprite):
 	def __init__(self, text_list, font, character_name):
@@ -90,7 +85,13 @@ class Dialog_Object(pygame.sprite.Sprite):
 	def create_text_sprites(self, font):
 		self.image_list= []
 		for texts in self.text_list:
-			self.image_list.append(font.render(texts, True, pygame.Color('white'),(0, 0)))
+			font_text = font.render(texts, False, pygame.Color('black'))
+			width, height = font_text.get_rect().width, font_text.get_rect().height
+			bubble_image = assets.load("text_bubble")[0][0]
+			bubble_image = pygame.transform.scale(bubble_image, (width + 25, height + 20)).convert_alpha()
+			x, y = bubble_image.get_rect().centerx - font_text.get_rect().centerx, bubble_image.get_rect().centery - font_text.get_rect().centery
+			bubble_image.blit(font_text, (x, y))
+			self.image_list.append(bubble_image)
 			self.image = self.image_list[0]
 			self.rect  = self.image.get_rect()
 
