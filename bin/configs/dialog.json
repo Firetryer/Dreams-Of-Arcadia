@@ -1,4 +1,16 @@
 {
+	"Kenny":{
+		"ask_for_permission_first":{
+			"dialog":[
+				"I'm not in a video game.",
+				"I should ask for permission first if its not mine.",""
+			],
+			"flags_required":{
+				"got_permission_from_mom": false
+			}
+		}
+
+	},
 	"Ted":{
 		"phone":{
 
@@ -25,6 +37,15 @@
 			],
 			"flags_required":{
 				"answered_ted_phone":true
+			}
+		},
+		"answer_the_phone":{
+			"dialog":[
+				"Hey Kenny, I think I hear the phone in your room",
+				"Don't be rude! Go answer it!",""
+			],
+			"flags_required":{
+				"answered_ted_phone":false
 			}
 		}
 

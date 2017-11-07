@@ -84,6 +84,11 @@
 						"flags_required":{},
 						"type":"dialog_start",
 						"character":"Kennys Mom"
+					},
+					{
+						"flags_required":{"answered_ted_phone": true},
+						"type":"set_flag",
+						"flag_settings":{"got_permission_from_mom":true}
 					}
 				]
 			},
@@ -97,6 +102,71 @@
 						"flags_required":{},
 						"type":"move",
 						"dest":"Kennys Bed Room"
+					}
+				]
+			},
+			{
+				"type": "mask",
+				"name": "door",
+				"clickable": true,
+				"location":{"x":0,"y":378,"width":249,"height":543},
+				"action":[
+					{
+						"flags_required":{},
+						"type":"move",
+						"dest":"Kennys Kitchen"
+					}
+				]
+			}
+		]
+	},
+	"Kennys Kitchen":{
+		"name":"Kennys Kitchen",
+		"background":"kitchen01",
+		"interactables":[
+			{
+				"type" : "character",
+				"name" : "Kenny",
+				"image": "character",
+				"clickable": false,
+				"location":{"x":1200,"y":532},
+				"action":[
+				]
+			},
+			{
+				"type": "mask",
+				"name": "door",
+				"clickable": true,
+				"location":{"x":1846,"y":418,"width":74,"height":513},
+				"action":[
+					{
+						"flags_required":{},
+						"type":"move",
+						"dest":"Kennys Living Room"
+					}
+				]
+			},
+			{
+				"type" : "character",
+				"name" : "money",
+				"image": "money_change",
+				"clickable": true,
+				"location":{"x":930,"y":624},
+				"action":[
+					{
+						"flags_required":{"got_permission_from_mom":true},
+						"type"   : "add_to_wallet",
+						"amount" : 5
+					},
+					{
+						"flags_required":{"got_permission_from_mom":false},
+						"type"      : "dialog_start",
+						"character" : "Kenny"
+					},
+					{
+						"flags_required":{"got_permission_from_mom":true},
+						"type"      : "remove_sprite",
+						"sprite_name" : "money"
 					}
 				]
 			}
