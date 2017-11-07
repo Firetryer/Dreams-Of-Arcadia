@@ -140,7 +140,9 @@ class Sprite_Manager():
 	def update_sprites(self):
 		self.sg_all.update()
 
-
+# Make it so that players can't click when dialogs are open.
+# Possibly make it so that when they click on the screen when dialogs are open,
+# it skips the current line (changing cur_wait to max_wait per click)
 class Dialog_Manager():
 	def __init__(self, screen, game_flags):
 		self.scene = screen
@@ -220,14 +222,16 @@ class Scripting():
 						elif action['type'] == 'remove_sprite':
 							self.world.current_screen.sprites.remove_sprite(action['sprite_name'])
 
+						else:
+							print("DEBUG: NO CONDITION FOR ACTION: ", action)
 
 	def _set_flags(self, flag_settings):
 		for flag in flag_settings:
 			if flag in self.game_flags:
-				print("DEBUG: Setting > ", flag, " > to >", flag_settings[flag])
+				#print("DEBUG: Setting > ", flag, " > to >", flag_settings[flag])
 				self.game_flags[flag] = flag_settings[flag]
 			else:
-				print("DEBUG: No Such Flag Called > ", flag)
+				print("ERROR: No Such Flag Called > ", flag)
 
 
 	def _has_required_flags(self, action):
@@ -238,12 +242,12 @@ class Scripting():
 					if game_flags == required_flags: #Checks if keys are the same
 						#Checks if values are the same
 						if self.game_flags[game_flags] == action['flags_required'][required_flags]: 
-							print("DEBUG: VALUES ARE EQUAL")
+							#print("DEBUG: VALUES ARE EQUAL")
 							return action
 						else:
-							print("DEBUG: Values not equal")
+							#print("DEBUG: Values not equal")
 							return False		
 		else:#No Requirements
-			print("DEBUG: NO REQUIREMENTS")
+			#print("DEBUG: NO REQUIREMENTS")
 			return action
 	
