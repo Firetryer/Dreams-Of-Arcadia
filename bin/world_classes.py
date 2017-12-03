@@ -78,7 +78,7 @@ class Dialog_Object(pygame.sprite.Sprite):
 		self._inworld = True
 		self.can_click = False
 		self.cur_iter = 0
-		self.max_wait = 100
+		self.max_wait = 90
 		self.cur_wait = 0
 		self._layer   = 20
 

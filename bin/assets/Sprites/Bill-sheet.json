@@ -1,0 +1,56 @@
+{ "frames": [
+   {
+    "filename": "Bill 0.ase",
+    "frame": { "x": 0, "y": 0, "w": 183, "h": 397 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 183, "h": 397 },
+    "sourceSize": { "w": 183, "h": 397 },
+    "duration": 100
+   },
+   {
+    "filename": "Bill 1.ase",
+    "frame": { "x": 183, "y": 0, "w": 183, "h": 397 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 183, "h": 397 },
+    "sourceSize": { "w": 183, "h": 397 },
+    "duration": 100
+   },
+   {
+    "filename": "Bill 2.ase",
+    "frame": { "x": 366, "y": 0, "w": 183, "h": 397 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 183, "h": 397 },
+    "sourceSize": { "w": 183, "h": 397 },
+    "duration": 100
+   },
+   {
+    "filename": "Bill 3.ase",
+    "frame": { "x": 549, "y": 0, "w": 183, "h": 397 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 183, "h": 397 },
+    "sourceSize": { "w": 183, "h": 397 },
+    "duration": 100
+   },
+   {
+    "filename": "Bill 4.ase",
+    "frame": { "x": 732, "y": 0, "w": 183, "h": 397 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 183, "h": 397 },
+    "sourceSize": { "w": 183, "h": 397 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.3-dev",
+  "image": "/home/rewelcabiles/Development/Projects/RetroGameJam/bin/assets/Sprites/Bill-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 915, "h": 397 },
+  "scale": "1"
+ }
+}

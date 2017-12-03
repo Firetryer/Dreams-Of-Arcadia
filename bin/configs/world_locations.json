@@ -6,7 +6,7 @@
 			{
 				"type" : "character",
 				"name" : "Kenny",
-				"image": "character",
+				"image": "kenny",
 				"clickable": false,
 				"location":{"x":1100,"y":532},
 				"action":[
@@ -29,14 +29,15 @@
 			},
 			{
 				"type": "mask",
-				"name": "Ted",
+				"name": "Phone",
 				"clickable": true,
 				"location":{"x":713,"y":723,"width":149,"height":89},
 				"action":[
 					{
 						"flags_required":{},
 						"type":"dialog_start",
-						"character":"Ted"
+						"character":"Phone",
+						"dialog_id":"Ted"
 					},
 					{
 						"flags_required":{"answered_ted_phone":false},
@@ -67,7 +68,7 @@
 			{
 				"type" : "character",
 				"name" : "Kenny",
-				"image": "character",
+				"image": "kenny",
 				"clickable": false,
 				"location":{"x":1200,"y":532},
 				"action":[
@@ -83,7 +84,8 @@
 					{
 						"flags_required":{},
 						"type":"dialog_start",
-						"character":"Kennys Mom"
+						"character":"Kennys Mom",
+						"dialog_id":"Kennys Mom"
 					},
 					{
 						"flags_required":{"answered_ted_phone": true},
@@ -94,7 +96,7 @@
 			},
 			{
 				"type": "mask",
-				"name": "door",
+				"name": "door_to_kennys_bed",
 				"clickable": true,
 				"location":{"x":1646,"y":445,"width":270,"height":481},
 				"action":[
@@ -107,7 +109,33 @@
 			},
 			{
 				"type": "mask",
-				"name": "door",
+				"name": "door_to_outside_kennys_house",
+				"clickable": true,
+				"location":{"x":930,"y":450,"width":385,"height":475},
+				"action":[
+					{
+						"flags_required":{"got_permission_from_mom":true, "got_money_from_counter":true},
+						"type":"move",
+						"dest":"Outside Kennys House"
+					},
+					{
+						"flags_required": {"got_money_from_counter":false, "got_permission_from_mom":true},
+						"type"      : "dialog_start",
+						"character" : "Kenny",
+						"dialog_id" : "LivingRoomDoor"
+
+					},
+					{
+						"flags_required": {"got_permission_from_mom":false},
+						"type"      : "dialog_start",
+						"character" : "Kenny",
+						"dialog_id" : "LivingRoomDoor"
+					}
+				]
+			},
+			{
+				"type": "mask",
+				"name": "door_to_kennys_kitchen",
 				"clickable": true,
 				"location":{"x":0,"y":378,"width":249,"height":543},
 				"action":[
@@ -127,7 +155,7 @@
 			{
 				"type" : "character",
 				"name" : "Kenny",
-				"image": "character",
+				"image": "kenny",
 				"clickable": false,
 				"location":{"x":1200,"y":532},
 				"action":[
@@ -135,7 +163,7 @@
 			},
 			{
 				"type": "mask",
-				"name": "door",
+				"name": "door_to_kennys_living_room",
 				"clickable": true,
 				"location":{"x":1846,"y":418,"width":74,"height":513},
 				"action":[
@@ -161,15 +189,70 @@
 					{
 						"flags_required":{"got_permission_from_mom":false},
 						"type"      : "dialog_start",
-						"character" : "Kenny"
+						"character" : "Kenny",
+						"dialog_id" : "Money_On_Counter"
 					},
 					{
 						"flags_required":{"got_permission_from_mom":true},
 						"type"      : "remove_sprite",
 						"sprite_name" : "money"
+					},
+					{
+						"flags_required":{"got_permission_from_mom":true},
+						"type"      : "set_flag",
+						"flag_settings":{"got_money_from_counter":true}
 					}
 				]
 			}
+		]
+	},
+	"Outside Kennys House":{
+		"name":"Outside Kennys House",
+		"background": "outsidehouse01",
+		"interactables":[
+			{
+				"type" : "character",
+				"name" : "Kenny",
+				"image": "kenny",
+				"clickable": false,
+				"location":{"x":1600,"y":532},
+				"action":[
+				]
+			},
+			{
+				"type" : "character",
+				"name" : "Bill",
+				"image": "bill",
+				"clickable": true,
+				"location":{"x":1100,"y":532},
+				"action":[
+					{
+						"flags_required":{},
+						"type"      : "dialog_start",
+						"character" : "Bill",
+						"dialog_id" : "Bill"
+					},
+					{
+						"flags_required":{},
+						"type"      : "set_flag",
+						"flag_settings":{"talked_to_bill_for_the_first_time":true}
+					}
+				]
+			},
+			{
+				"type": "mask",
+				"name": "door_to_kennys_living_room",
+				"clickable": true,
+				"location":{"x":1655,"y":515,"width":201,"height":273},
+				"action":[
+					{
+						"flags_required":{},
+						"type":"move",
+						"dest":"Kennys Living Room"
+					}
+				]
+			}
+
 		]
 	}
 

@@ -5,25 +5,26 @@
 		"file" : "bin/assets/NOIMG.png"
 	},
 
-	"chat_text":{
+	"livingroom01":{
 		"type" : "static",
-		"file" : "bin/assets/Backdrops/Chatbox_text.png"
+		"file" : "bin/assets/Backgrounds/LivingRoom01.png"
 	},
 
-	"text_lines":{
+	"kitchen01":{
 		"type" : "static",
-		"file" : "bin/assets/Backdrops/text_lines.png"
+		"file" : "bin/assets/Backgrounds/Kitchen.png"
 	},
 
-	"text_lines_bottom":{
+	"bedroom01":{
 		"type" : "static",
-		"file" : "bin/assets/Backdrops/text_lines_bottom.png"
+		"file" : "bin/assets/Backgrounds/Bedroom01.png"
 	},
 
-	"Hack_Font":{
-		"type" : "font",
-		"file" : "bin/assets/Fonts/Hack-Regular.ttf"
-	},
+	"outsidehouse01":{
+		"type" : "static",
+		"file" : "bin/assets/Backgrounds/OutsideKennysHouse.png"
+	},	
+
 	"Pixel_Font":{
 		"type" : "font",
 		"file" : "bin/assets/Fonts/Instructions.ttf"
@@ -33,26 +34,23 @@
 		"file" : "bin/assets/Backdrops/mask.png"
 	},
 
-	"Arcade01":{
-		"type" : "static",
-		"file" : "bin/assets/Backdrops/Arcade01.png"
-	},
 
-
-	"Arcade_Entrance":{
-		"type" : "static",
-		"file" : "bin/assets/Backdrops/Arcade_Entrance.png"
-	},
-
-	"Thomas01":{
-		"type" : "static",
-		"file" : "bin/assets/Backdrops/Thomas01.png"
-	},
-
-	"character":{
+	"kenny":{
 		"type" : "animated",
 		"file" : "bin/assets/Sprites/Character-sheet.png",
 		"info" : "bin/assets/Sprites/Character-sheet.json",
+		"delay": 10
+	},
+	"kennys_mom":{
+		"type" : "animated",
+		"file" : "bin/assets/Sprites/Kennys_Mom-sheet.png",
+		"info" : "bin/assets/Sprites/Kennys_Mom-sheet.json",
+		"delay": 10
+	},
+	"bill":{
+		"type" : "animated",
+		"file" : "bin/assets/Sprites/Bill-sheet.png",
+		"info" : "bin/assets/Sprites/Bill-sheet.json",
 		"delay": 10
 	},
 	"phone_ring":{
@@ -61,25 +59,9 @@
 		"info" : "bin/assets/Sprites/Phone_Ring-sheet.json",
 		"delay": 8
 	},
-	"kennys_mom":{
-		"type" : "animated",
-		"file" : "bin/assets/Sprites/Kennys_Mom-sheet.png",
-		"info" : "bin/assets/Sprites/Kennys_Mom-sheet.json",
-		"delay": 10
-	},
-
-	"bedroom01":{
-		"type" : "static",
-		"file" : "bin/assets/Backgrounds/Bedroom01.png"
-	},
-	"livingroom01":{
-		"type" : "static",
-		"file" : "bin/assets/Backgrounds/LivingRoom01.png"
-	},
-	"kitchen01":{
-		"type" : "static",
-		"file" : "bin/assets/Backgrounds/Kitchen.png"
-	},
+	
+	
+	
 	"money_change":{
 		"type" : "static",
 		"file" : "bin/assets/Sprites/money_change.png"

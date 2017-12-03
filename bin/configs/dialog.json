@@ -1,5 +1,37 @@
 {
-	"Kenny":{
+	"Bill":{
+		"Hey Kenny":{
+			"dialog":[
+				"Hey Kenny! Going to the arcade as well?",
+				"Ted called me all excited about something",
+				"but wouldn't tell me what it was, just that I should go to the Arcade,",
+				"Say, since we're both going there, why don't we race? Huh?",
+				"Great! Last one there isn't first place!",""
+			],
+			"flags_required":{}
+		}
+	},
+	"LivingRoomDoor":{
+		"went_out_door_before_getting_money":{
+			"dialog":[
+				"Mom JUST told me to get the money from the kitchen",
+				"I might as well just get it before going",""
+			],
+			"flags_required":{
+				"got_money_from_counter": false,
+				"got_permission_from_mom":true
+			}
+		},
+		"trying to go out the door before talking to mom":{
+			"dialog":[
+				"I should speak to mom before going out.",""
+			],
+			"flags_required":{
+				"got_permission_from_mom":false
+			}
+		}
+	},
+	"Money_On_Counter":{
 		"ask_for_permission_first":{
 			"dialog":[
 				"I'm not in a video game.",

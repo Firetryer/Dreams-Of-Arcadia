@@ -48,8 +48,8 @@ class World:
 		self.set_screen('Kennys Bed Room')
 
 
-	def set_screen(self, newscreen):
-		self.current_screen = self.screen_manager.get_scene(newscreen)
+	def set_screen(self, new_screen_name):
+		self.current_screen = self.screen_manager.get_scene(new_screen_name)
 
 
 	def update(self):
@@ -89,8 +89,12 @@ class Screen_Manager:
 
 
 	def get_scene(self, name):
-		if name not in list(self.scenes):
-			self.create_scenes(name)
+		if name not in self.scene_configs:
+			print("ERROR: Name Destination Name not in CONFIG: ", name)
+			return self.world.current_screen
+		else:
+			if name not in list(self.scenes):
+				self.create_scenes(name)
 		return self.scenes[name]
 
 
@@ -154,8 +158,8 @@ class Dialog_Manager():
 
 
 	def start_dialog(self, action):
-		for dialogs in self.dialogs[action['character']]:
-			DIALOG = self._has_required_flags(self.dialogs[action['character']][dialogs])
+		for dialogs in self.dialogs[action['dialog_id']]:
+			DIALOG = self._has_required_flags(self.dialogs[action['dialog_id']][dialogs])
 			if DIALOG != False:
 				# This isn't optimal, it creates text objects before checking if the character
 				# Is even in the scene
@@ -170,21 +174,20 @@ class Dialog_Manager():
 
 	def _has_required_flags(self, action):
 		#Check if has necessary flags required:
+		has_required_flags = True
 		if bool(action['flags_required']): #Is not empty
 			for game_flags in self.game_flags:
 				for required_flags in action['flags_required']:
 					if game_flags == required_flags: #Checks if keys are the same
-						#Checks if values are the same
-						if self.game_flags[game_flags] == action['flags_required'][required_flags]: 
+						if self.game_flags[game_flags] != action['flags_required'][required_flags]: #Checks if values are the same
 							print("DEBUG: VALUES ARE EQUAL")
-							return action
-						else:
-							print("DEBUG: Values not equal")
-							return False		
+							has_required_flags = False	
 		else:#No Requirements
 			print("DEBUG: NO REQUIREMENTS")
+		if has_required_flags:
 			return action
-
+		else:
+			return False
 
 	def update(self):
 		for dialogs in self.sg_dialogs:
@@ -206,7 +209,7 @@ class Scripting():
 		if sprite != None:
 			if bool(sprite.action):
 				for actions in sprite.action:
-					print (actions)
+					#print (actions)
 					action = self._has_required_flags(actions)
 					if action != False:
 						if action['type'] == 'move':
@@ -235,19 +238,16 @@ class Scripting():
 
 
 	def _has_required_flags(self, action):
+		has_required_flags = True
 		#Check if has necessary flags required:
 		if bool(action['flags_required']): #Is not empty
 			for game_flags in self.game_flags:
 				for required_flags in action['flags_required']:
 					if game_flags == required_flags: #Checks if keys are the same
-						#Checks if values are the same
-						if self.game_flags[game_flags] == action['flags_required'][required_flags]: 
-							#print("DEBUG: VALUES ARE EQUAL")
-							return action
-						else:
-							#print("DEBUG: Values not equal")
-							return False		
-		else:#No Requirements
-			#print("DEBUG: NO REQUIREMENTS")
+						if self.game_flags[game_flags] != action['flags_required'][required_flags]: #Checks if values are the same
+							has_required_flags = False
+		if has_required_flags:
 			return action
+		else:
+			return False
 	
